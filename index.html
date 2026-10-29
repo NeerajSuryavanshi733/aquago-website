@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087cf0">
+<meta name="description" content="AquaGo makes everyday drinking water delivery simple. Order 20-litre water bottles from local suppliers and plan deliveries around your day.">
+<title>AquaGo — Pure water. Right to your doorstep.</title>
+<style>
+:root {
+  --site-primary: #087CF0;
+  --site-on-primary: #FFFFFF;
+  --site-secondary: #102B46;
+  --site-on-secondary: #FFFFFF;
+  --site-background: #F5FAFF;
+  --site-on-background: #102B46;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: light-dark(#F5FAFF, #081522); color: light-dark(#102B46, #EAF5FF); }
+#app { min-height: 100vh; width: 100%; background-color: light-dark(var(--site-background), #081522); color: light-dark(var(--site-on-background), #EAF5FF); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: calc(18px * var(--site-spacing-scale)) 0; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 850; font-size: 25px; letter-spacing: -1.2px; }
+.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; background: var(--site-primary); color: white; box-shadow: 0 8px 22px #087cf02e; }
+.brand span:last-child { color: var(--site-primary); }
+.navlinks { display: flex; align-items: center; gap: 28px; color: light-dark(#526a82, #B4C7DA); font-size: 14px; font-weight: 650; }
+.navlinks a:hover { color: var(--site-primary); }
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 18px; border-radius: calc(14px * var(--site-radius-scale)); border: 1px solid transparent; font-weight: 750; font-size: 14px; cursor: pointer; transition: transform .18s, box-shadow .18s, background .18s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--site-primary); color: var(--site-on-primary); box-shadow: 0 10px 24px #087cf02b; }
+.btn-primary:hover { box-shadow: 0 14px 28px #087cf03b; }
+.btn-ghost { border-color: light-dark(#D7E7F7, #284158); background: light-dark(#FFFFFF, #102337); color: light-dark(#102B46, #EAF5FF); }
+.hero { position: relative; padding: calc(62px * var(--site-spacing-scale)) 0 calc(70px * var(--site-spacing-scale)); }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 48px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1px solid light-dark(#D6EAFE, #1E496C); background: light-dark(#EAF5FF, #102B46); color: var(--site-primary); border-radius: 999px; padding: 8px 12px; font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.pulse { width: 7px; height: 7px; background: #22C98A; border-radius: 50%; box-shadow: 0 0 0 4px #22c98a22; }
+h1,h2,h3,p { margin-top: 0; }
+h1 { font-family: var(--site-font-heading); font-size: calc(clamp(42px, 5.5vw, 70px) * var(--site-heading-scale)); letter-spacing: -.065em; line-height: .99; margin: 22px 0; max-width: 650px; }
+.gradient-text { color: var(--site-primary); }
+.hero-copy { color: light-dark(#5D7288, #B4C7DA); font-size: 17px; line-height: 1.75; max-width: 510px; margin-bottom: 28px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; color: light-dark(#5D7288, #B4C7DA); font-size: 12px; font-weight: 650; }
+.trust-row span { display: inline-flex; align-items: center; gap: 7px; }
+.check { color: #14B981; font-weight: 900; }
+.visual { position: relative; min-height: 430px; display: grid; place-items: center; }
+.visual-halo { position: absolute; width: min(430px, 95%); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, light-dark(#D8EDFF, #103653) 0%, light-dark(#EAF5FF, #0C2032) 62%, transparent 70%); opacity: var(--site-decoration-opacity); }
+.delivery-card { z-index: 1; position: relative; width: min(420px, 100%); padding: 26px; background: light-dark(#FFFFFF, #102337); border: 1px solid light-dark(#DFECF8, #243E55); border-radius: 30px; box-shadow: 0 30px 80px #0b4c8020; transform: rotate(-2deg); }
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.mini-label { color: light-dark(#7A8DA2, #9EB3C9); font-size: 12px; font-weight: 700; }
+.live-pill { background: #E5FBF1; color: #11845A; font-size: 11px; font-weight: 850; border-radius: 999px; padding: 7px 10px; }
+.bottle-scene { height: 218px; border-radius: 22px; background: linear-gradient(145deg, #DDF0FF, #F2F9FF); position: relative; overflow: hidden; display: grid; place-items: center; }
+.bottle-scene:before,.bottle-scene:after { content:""; position:absolute; border-radius:50%; border:1px solid #83C5FF66; width:240px;height:240px; }
+.bottle-scene:after { width:290px;height:290px; }
+.bottle { position: relative; width: 94px; height: 150px; z-index: 1; border-radius: 24px 24px 20px 20px; background: linear-gradient(90deg,#5AAEFF,#BDE7FF 35%,#69B9FF 72%,#278BE8); box-shadow: inset 8px 0 12px #ffffff88, 0 16px 24px #087cf033; border: 2px solid #FFFFFFB0; }
+.bottle:before { content:""; position:absolute; width:42px;height:26px; top:-22px;left:24px;border-radius:8px 8px 3px 3px;background:#087CF0;border:3px solid #C4E8FF; }
+.bottle:after { content:"AquaGo"; position:absolute; left:9px;right:9px;top:57px; padding:7px 0; text-align:center; border-radius:9px; background:#FFFFFFE8; color:#087CF0; font-size:12px;font-weight:900; }
+.spark { position:absolute; z-index:2; color:#087CF0; font-size:25px; }
+.spark.one { left:20%; top:28%; }.spark.two { right:19%; top:24%; font-size:17px; }.spark.three { right:25%; bottom:21%; font-size:22px; }
+.delivery-info { display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:20px; }
+.delivery-info strong { display:block; font-size:15px; margin-bottom:5px; }
+.delivery-info small { color: light-dark(#7A8DA2, #9EB3C9); font-size:12px; }
+.price { font-size:23px; font-weight:900; color:var(--site-primary); white-space:nowrap; }
+.floating-note { z-index:2; position:absolute; right:-6px; bottom:45px; display:flex; align-items:center; gap:11px; background:light-dark(#FFFFFF,#102337); border:1px solid light-dark(#DCEAF7,#243E55); padding:13px 16px; border-radius:18px; box-shadow:0 16px 40px #0b4c801a; transform:rotate(2deg); }
+.note-icon { width:37px;height:37px;display:grid;place-items:center;border-radius:12px;background:#E4FBF1;color:#0A9B68;font-size:19px; }
+.floating-note strong { display:block;font-size:12px; }.floating-note small { color:light-dark(#7A8DA2,#9EB3C9);font-size:11px; }
+.metrics { padding: 0 0 54px; }
+.metrics-grid { display:grid;grid-template-columns:repeat(3,1fr);background:light-dark(#FFFFFF,#102337);border:1px solid light-dark(#DFECF8,#243E55);border-radius:22px;padding:24px 10px;box-shadow:0 14px 40px #0b4c800b; }
+.metric { text-align:center;padding:8px 16px;border-right:1px solid light-dark(#E2EDF7,#284158); }.metric:last-child{border:0}.metric strong{font-size:16px;display:block;margin-bottom:6px}.metric span{font-size:12px;color:light-dark(#7A8DA2,#9EB3C9)}
+.section { padding: calc(74px * var(--site-spacing-scale)) 0; }
+.section-heading { max-width:650px;text-align:center;margin:0 auto 42px; }
+.kicker { color:var(--site-primary);font-size:12px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px; }
+h2 { font-size:calc(clamp(30px,4vw,45px) * var(--site-heading-scale));letter-spacing:-.05em;line-height:1.08;margin-bottom:14px; }
+.section-heading p { color:light-dark(#61778E,#B4C7DA);line-height:1.7;margin-bottom:0; }
+.features { display:grid;grid-template-columns:repeat(3,1fr);gap:18px; }
+.feature { padding:26px;border:1px solid light-dark(#DFECF8,#243E55);background:light-dark(#FFFFFF,#102337);border-radius:22px;transition:transform .2s,border-color .2s; }
+.feature:hover { transform:translateY(-5px);border-color:#9ACDFF; }
+.feature-icon { display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:light-dark(#EAF5FF,#153A59);color:var(--site-primary);font-size:23px;margin-bottom:22px; }
+.feature h3 { font-size:17px;margin-bottom:9px;letter-spacing:-.02em; }.feature p { color:light-dark(#6D8196,#A8BCD0);font-size:13px;line-height:1.7;margin-bottom:0; }
+.how { background:light-dark(#EAF5FF,#0B1D2D); }
+.steps { display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step; }
+.step { padding:26px 24px; background:light-dark(#FFFFFF,#102337);border:1px solid light-dark(#DCEAF7,#243E55);border-radius:22px; }
+.step-number { display:grid;place-items:center;width:40px;height:40px;background:var(--site-primary);color:white;border-radius:13px;font-weight:900;margin-bottom:20px; }.step h3{font-size:17px;margin-bottom:9px}.step p{font-size:13px;line-height:1.7;color:light-dark(#6D8196,#A8BCD0);margin-bottom:0}
+.supplier-panel { display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;padding:36px;background:var(--site-secondary);color:#FFFFFF;border-radius:28px;position:relative;overflow:hidden; }
+.supplier-panel:after { content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:12%;top:-160px;border:1px solid #FFFFFF20;box-shadow:0 0 0 35px #FFFFFF08,0 0 0 70px #FFFFFF05;pointer-events:none; }
+.supplier-panel h2{font-size:clamp(28px,3.5vw,39px);max-width:620px;margin-bottom:12px}.supplier-panel p{color:#B7CBE0;line-height:1.7;max-width:650px;margin-bottom:0}.supplier-panel .btn{z-index:1;white-space:nowrap;background:#FFFFFF;color:#0755B8}
+.faq { display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start; }
+.faq-intro p { color:light-dark(#61778E,#B4C7DA);line-height:1.7; }
+details { border-bottom:1px solid light-dark(#DCEAF7,#243E55);padding:18px 0; } summary { cursor:pointer;list-style:none;font-weight:750;font-size:15px;display:flex;justify-content:space-between;gap:15px; } summary::-webkit-details-marker{display:none} summary:after{content:"+";color:var(--site-primary);font-size:22px;line-height:1} details[open] summary:after{content:"−"} details p{margin:13px 24px 0 0;color:light-dark(#6D8196,#A8BCD0);font-size:13px;line-height:1.7}
+.cta { padding:0 0 78px; }.cta-box { text-align:center;padding:52px 24px;background:linear-gradient(135deg,#087CF0,#0755B8);color:#FFFFFF;border-radius:30px;position:relative;overflow:hidden; }.cta-box:before{content:"";position:absolute;width:330px;height:330px;border:1px solid #FFFFFF35;border-radius:50%;left:-80px;top:-210px;box-shadow:0 0 0 35px #FFFFFF0C,0 0 0 70px #FFFFFF08}.cta-box h2{max-width:650px;margin:0 auto 14px}.cta-box p{color:#E1F0FF;line-height:1.7;max-width:560px;margin:0 auto 24px}.cta-box .btn{background:#FFFFFF;color:#0755B8;position:relative}
+footer { border-top:1px solid light-dark(#DFECF8,#243E55);padding:28px 0;color:light-dark(#6D8196,#A8BCD0);font-size:12px; }.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-brand{font-size:19px;color:light-dark(#102B46,#EAF5FF)}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.fineprint{margin-top:15px;line-height:1.7;max-width:850px}
+.toast { position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:20;background:light-dark(#102B46,#EAF5FF);color:light-dark(#FFFFFF,#102B46);padding:14px 18px;border-radius:14px;box-shadow:0 15px 40px #0002;font-size:13px;font-weight:700;transition:.25s;max-width:calc(100% - 32px);text-align:center; }.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:26px}.hero-copy{max-width:650px}.visual{min-height:390px}.delivery-card{max-width:400px}.floating-note{right:calc(50% - 220px);bottom:16px}.features,.steps{grid-template-columns:1fr 1fr}.faq{grid-template-columns:1fr;gap:22px}.navlinks{display:none}}
+@media(max-width:600px){.container{width:min(100% - 28px,1160px)}.nav{padding:14px 0}.brand{font-size:22px}.brand-mark{width:38px;height:38px}.nav-actions .btn-ghost{display:none}.nav-actions .btn{padding:10px 12px;font-size:12px}.hero{padding:38px 0 45px}.hero-grid{gap:20px}h1{font-size:clamp(42px,12vw,60px)}.hero-copy{font-size:15px}.visual{min-height:340px}.delivery-card{padding:17px;border-radius:24px}.bottle-scene{height:180px}.bottle{transform:scale(.88)}.floating-note{right:-2px;bottom:0;padding:10px 12px}.metrics{padding-bottom:28px}.metrics-grid{padding:14px 2px}.metric{padding:8px 6px}.metric strong{font-size:12px}.metric span{font-size:10px}.section{padding:54px 0}.section-heading{margin-bottom:28px}.features,.steps{grid-template-columns:1fr}.feature,.step{padding:22px}.supplier-panel{grid-template-columns:1fr;padding:27px}.supplier-panel .btn{justify-self:start}.cta{padding-bottom:54px}.cta-box{padding:40px 20px}.footer-row{align-items:flex-start;flex-direction:column}.trust-row{gap:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+<header class="container">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#home" aria-label="AquaGo home"><span class="brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none"><path d="M12 2.8C9.4 6.7 5.4 10.8 5.4 15a6.6 6.6 0 0 0 13.2 0c0-4.2-4-8.3-6.6-12.2Z" fill="currentColor"/><path d="M8.7 15.4c.2 1.8 1.4 2.8 3.2 3" stroke="#087CF0" stroke-width="1.6" stroke-linecap="round"/></svg></span><span style="color:light-dark(#102B46,#EAF5FF)">Aqua</span><span>Go</span></a>
+    <div class="navlinks"><a href="#how">How it works</a><a href="#features">Why AquaGo</a><a href="#suppliers">For suppliers</a><a href="#faq">FAQs</a></div>
+    <div class="nav-actions"><a class="btn btn-ghost" href="#suppliers">I'm a supplier</a><a class="btn btn-primary" href="#get-started">Get started <span aria-hidden="true">↗</span></a></div>
+  </nav>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> Everyday water, made easier</div>
+      <h1>Pure water.<br><span class="gradient-text">Right to your doorstep.</span></h1>
+      <p class="hero-copy">Your day is busy enough. Find local water suppliers, order your 20-litre bottles, and plan deliveries around your schedule—all with AquaGo.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#get-started">Explore AquaGo <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="#how"><span aria-hidden="true">▷</span> See how it works</a></div>
+      <div class="trust-row"><span><b class="check">✓</b> Simple ordering</span><span><b class="check">✓</b> Local suppliers</span><span><b class="check">✓</b> Scheduled delivery</span></div>
+    </div>
+    <div class="visual" aria-label="Illustration of an AquaGo water bottle">
+      <div class="visual-halo" aria-hidden="true"></div>
+      <div class="delivery-card">
+        <div class="card-top"><div><div class="mini-label">YOUR DAILY ESSENTIAL</div><strong style="display:block;margin-top:5px;font-size:18px">Fresh start, every day.</strong></div><span class="live-pill">● AQUAGO</span></div>
+        <div class="bottle-scene"><span class="spark one">✦</span><span class="spark two">✧</span><span class="spark three">✦</span><div class="bottle" aria-label="Illustrated blue water bottle"></div></div>
+        <div class="delivery-info"><div><strong>20-litre water bottle</strong><small>Everyday hydration, delivered</small></div><div class="price">₹25</div></div>
+      </div>
+      <div class="floating-note"><span class="note-icon">✓</span><div><strong>Delivery that fits your day</strong><small>Choose a time that works for you</small></div></div>
+    </div>
+  </div>
+</section>
+<section class="metrics"><div class="container metrics-grid"><div class="metric"><strong>Easy ordering</strong><span>Designed for everyday needs</span></div><div class="metric"><strong>Local connection</strong><span>Find suppliers around you</span></div><div class="metric"><strong>Your schedule</strong><span>Plan deliveries your way</span></div></div></section>
+<section class="section" id="features"><div class="container"><div class="section-heading"><div class="kicker">Why AquaGo</div><h2>Water delivery, without the hassle.</h2><p>A simpler way to manage your regular water needs—from your first order to your next scheduled delivery.</p></div><div class="features">
+  <article class="feature"><div class="feature-icon" aria-hidden="true">⌕</div><h3>Find local suppliers</h3><p>Discover nearby water suppliers and choose the option that suits your home or workplace.</p></article>
+  <article class="feature"><div class="feature-icon" aria-hidden="true">◷</div><h3>Choose your delivery time</h3><p>Request a delivery now or plan it for a time that works better for your routine.</p></article>
+  <article class="feature"><div class="feature-icon" aria-hidden="true">▦</div><h3>Plan regular orders</h3><p>Keep recurring water needs organised with a schedule that is easier to manage.</p></article>
+  <article class="feature"><div class="feature-icon" aria-hidden="true">♧</div><h3>Made for everyday use</h3><p>A clear, friendly experience for customers who need drinking water delivered regularly.</p></article>
+  <article class="feature"><div class="feature-icon" aria-hidden="true">✓</div><h3>Delivery confirmation</h3><p>Order status and delivery confirmation help customers and suppliers stay on the same page.</p></article>
+  <article class="feature"><div class="feature-icon" aria-hidden="true">♡</div><h3>Support when needed</h3><p>Get help with order-related questions through the support process as the service becomes available.</p></article>
+</div></div></section>
+<section class="section how" id="how"><div class="container"><div class="section-heading"><div class="kicker">How it works</div><h2>From order to doorstep in a few steps.</h2><p>AquaGo is being built to make local water delivery more straightforward.</p></div><div class="steps"><article class="step"><div class="step-number">01</div><h3>Choose your water</h3><p>Open AquaGo, sign in, and choose a local supplier for your 20-litre bottle order.</p></article><article class="step"><div class="step-number">02</div><h3>Pick your timing</h3><p>Request delivery as soon as possible or select a suitable scheduled time.</p></article><article class="step"><div class="step-number">03</div><h3>Confirm delivery</h3><p>Follow the order status and confirm delivery through the app's supported process.</p></article></div></div></section>
+<section class="section" id="suppliers"><div class="container"><div class="supplier-panel"><div><div class="kicker" style="color:#72C3FF">For local water suppliers</div><h2>Grow your delivery business with AquaGo.</h2><p>Connect with customers, keep incoming orders organised, and manage deliveries through one simple experience.</p></div><a class="btn" href="#get-started">Supplier information <span aria-hidden="true">→</span></a></div></div></section>
+<section class="section" id="faq"><div class="container faq"><div class="faq-intro"><div class="kicker">FAQs</div><h2>Good to know.</h2><p>Some AquaGo features are still being prepared. We'll share availability and service details as the platform launches.</p></div><div>
+  <details><summary>What is AquaGo?</summary><p>AquaGo is a water-delivery platform being developed to connect customers with local water suppliers.</p></details>
+  <details><summary>How much does a 20-litre bottle cost?</summary><p>The current planned price shown for a 20-litre bottle is ₹25. Actual availability and any applicable charges will be shown when ordering is available.</p></details>
+  <details><summary>Can I schedule a delivery?</summary><p>Scheduled delivery is part of the planned AquaGo experience. Availability will depend on launch status and local supplier coverage.</p></details>
+  <details><summary>Is AquaGo available everywhere?</summary><p>AquaGo is still being prepared. Service areas will be announced as local supplier coverage becomes available.</p></details>
+</div></div></section>
+<section class="cta" id="get-started"><div class="container"><div class="cta-box"><h2>Your water routine deserves to be simpler.</h2><p>AquaGo is on its way. Check back for launch updates and service availability in your area.</p><a class="btn" href="#home" id="notifyButton">Keep me in the loop <span aria-hidden="true">→</span></a></div></div></section>
+</main>
+<footer><div class="container"><div class="footer-row"><a class="brand footer-brand" href="#home"><span class="brand-mark" style="width:32px;height:32px;border-radius:10px"><span aria-hidden="true">💧</span></span><span style="color:light-dark(#102B46,#EAF5FF)">Aqua</span><span>Go</span></a><div class="footer-links"><a href="#features">Features</a><a href="#suppliers">Suppliers</a><a href="#faq">FAQs</a><a href="#get-started">Launch updates</a></div><span>© <span id="year"></span> AquaGo</span></div><p class="fineprint">AquaGo is currently in development. This page is an informational preview, not an active ordering or payment service. Prices, delivery availability, and features may change before launch. Do not submit payment or sensitive personal information on this page.</p></div></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(message) { toast.textContent = message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 3200); }
+document.getElementById('notifyButton').addEventListener('click', (event) => { event.preventDefault(); showToast('Thanks for your interest! Launch updates will be available when AquaGo opens sign-ups.'); });
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
